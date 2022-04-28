@@ -12,6 +12,7 @@ namespace SmartMed.Model
         {
             SetName(name);
             SetQuantity(quantity);
+            SetCreationDate();
         }
 
         public string Name { get; protected set; }
@@ -30,6 +31,11 @@ namespace SmartMed.Model
         {
             ValidateQuantity(quantity);
             Quantity = quantity;
+        }
+
+        public void SetCreationDate()
+        {
+            CreationDate = DateTime.Now;
         }
 
         private void ValidateIsNullOrWhiteSpace(string value, string property)
