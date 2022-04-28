@@ -14,4 +14,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DataExtension\DataExtension.csproj" />
+  </ItemGroup>
+
 </Project>
