@@ -1,4 +1,5 @@
-﻿using SmartMed.Dtos;
+﻿using AutoMapper;
+using SmartMed.Dtos;
 using SmartMed.Infrastructure.Medication;
 using SmartMed.Model;
 
@@ -7,15 +8,16 @@ namespace SmartMed.Service
     public class MedicationService : IMedicationService
     {
         private IMedicationRepository _medicationRepository;
-        public MedicationService(IMedicationRepository medicationRepository)
+        private readonly IMapper _maper;
+        public MedicationService(IMedicationRepository medicationRepository, IMapper maper)
         {
             _medicationRepository = medicationRepository;
+            _maper = maper;
         }
 
         public List<MedicationDto> GetAll()
         {
-            throw new NotImplementedException();
-            //return ConvertToDto(_medicationRepository.GetAll());
+            return _maper.Map<List<Medication> ,List<MedicationDto>>(_medicationRepository.GetAll());
         }
 
         public MedicationDto Add(MedicationDto medication)
@@ -54,12 +56,13 @@ namespace SmartMed.Service
                     Errors = new List<string>() { "Invalid UniqueId" }
                 };
             }
+
+            var medicationDto = _maper.Map<MedicationDto>(existingMedication);
+
+            _medicationRepository.Delete(existingMedication);
+            _medicationRepository.Commit();
+            _medicationRepository.CommitTransaction();
+            return medicationDto;
         }
     }
-    #region Methods
-    //private List<MedicationDto> ConvertToDto(List<Medication> medications)
-    //{
-
-    //}
-    #endregion
 }
