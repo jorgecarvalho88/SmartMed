@@ -4,7 +4,7 @@ namespace SmartMed.Infrastructure.Medication
 {
     public interface IMedicationRepository : IRepositoryBase
     {
-        Model.Medication Get(Guid uniqueId);
+        Model.Medication Get(string name);
         List<Model.Medication> GetAll();
     }
 }
