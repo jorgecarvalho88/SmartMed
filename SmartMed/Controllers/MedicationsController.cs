@@ -17,6 +17,8 @@ namespace SmartMed.Controllers
 
         [HttpGet]
         [Route("")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<IEnumerable<MedicationResponseDto>>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult GetAll()
         {
             return Ok(_medicationService.GetAll());
@@ -24,13 +26,19 @@ namespace SmartMed.Controllers
 
         [HttpPost]
         [Route("")]
-        public IActionResult Add(MedicationDto medication)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MedicationResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(IEnumerable<MedicationResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public IActionResult Add(MedicationRequestDto medication)
         {
             return Ok(_medicationService.Add(medication));
         }
 
         [HttpDelete]
         [Route("{uniqueId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MedicationResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(IEnumerable<MedicationResponseDto>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public IActionResult Delete(Guid uniqueId)
         {
             return Ok(_medicationService.Delete(uniqueId));

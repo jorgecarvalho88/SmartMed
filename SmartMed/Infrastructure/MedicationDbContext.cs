@@ -15,7 +15,6 @@ namespace SmartMed.Infrastructure
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             MedicationContext.SetModel(modelBuilder);
-            MedicationContext.Seed(modelBuilder);
         }
     }
 }

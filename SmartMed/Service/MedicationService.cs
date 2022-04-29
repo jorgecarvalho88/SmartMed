@@ -15,35 +15,32 @@ namespace SmartMed.Service
             _maper = maper;
         }
 
-        public List<MedicationDto> GetAll()
+        public List<MedicationResponseDto> GetAll()
         {
-            return _maper.Map<List<Medication> ,List<MedicationDto>>(_medicationRepository.GetAll());
+            return _maper.Map<List<Medication> ,List<MedicationResponseDto>>(_medicationRepository.GetAll());
         }
 
-        public MedicationDto Add(MedicationDto medication)
+        public MedicationResponseDto Add(MedicationRequestDto medication)
         {
             _medicationRepository.BeginTransaction();
 
             var newMedication = new Medication(medication.Name, medication.Quantity);
 
-            if (medication.IsValid)
+            if (newMedication.IsValid)
             {
                 _medicationRepository.Create(newMedication);
                 _medicationRepository.Commit();
                 _medicationRepository.CommitTransaction();
-
-                medication.UniqueId = newMedication.UniqueId;
             }
             else
             {
                 _medicationRepository.RollBackTransaction();
-                medication.Errors.AddRange(newMedication.Errors);
             }
 
-            return medication;
+            return _maper.Map<MedicationResponseDto>(newMedication);
         }
 
-        public MedicationDto Delete(Guid medicationId)
+        public MedicationResponseDto Delete(Guid medicationId)
         {
             _medicationRepository.BeginTransaction();
 
@@ -51,13 +48,10 @@ namespace SmartMed.Service
             if (existingMedication is null)
             {
                 _medicationRepository.RollBackTransaction();
-                return new MedicationDto()
-                {
-                    Errors = new List<string>() { "Invalid UniqueId" }
-                };
+                return new MedicationResponseDto() { Errors = new List<string>() { "Invalid UniqueId" } };
             }
 
-            var medicationDto = _maper.Map<MedicationDto>(existingMedication);
+            var medicationDto = _maper.Map<MedicationResponseDto>(existingMedication);
 
             _medicationRepository.Delete(existingMedication);
             _medicationRepository.Commit();

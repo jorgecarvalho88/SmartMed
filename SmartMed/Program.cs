@@ -1,3 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using SmartMed.Infrastructure;
+using SmartMed.Infrastructure.Medication;
+using SmartMed.Service;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +13,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddTransient<IMedicationService, MedicationService>();
+builder.Services.AddTransient<IMedicationRepository, MedicationRepository>();
+builder.Services.AddDbContext<MedicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:sqlConnection").Value));
 
 var app = builder.Build();
 

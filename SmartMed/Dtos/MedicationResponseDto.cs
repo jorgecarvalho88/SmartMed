@@ -2,15 +2,18 @@
 
 namespace SmartMed.Dtos
 {
-    public class MedicationDto : ValidationBase
+    public class MedicationResponseDto : ValidationBase
     {
-        public MedicationDto()
+        public MedicationResponseDto()
         {}
 
-        public MedicationDto(string name, int quantity)
+        public MedicationResponseDto(Guid uniqueId, string name, int quantity, DateTime creationDate, List<string> errors)
         {
+            UniqueId = uniqueId;
             Name = name;
             Quantity = quantity;
+            CreationDate = creationDate;
+            Errors = errors;
         }
 
         public Guid UniqueId { get; set; }

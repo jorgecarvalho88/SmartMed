@@ -7,7 +7,7 @@ namespace SmartMed.Profiles
     {
         public MedicationProfile()
         {
-            CreateMap<Model.Medication, MedicationDto>()
+            CreateMap<Model.Medication, MedicationResponseDto>()
                 .ForMember(
                 dest => dest.UniqueId,
                 from => from.MapFrom(x => x.UniqueId)
