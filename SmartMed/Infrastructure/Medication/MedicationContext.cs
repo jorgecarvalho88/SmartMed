@@ -18,7 +18,21 @@ namespace SmartMed.Infrastructure.Medication
                 entity.Property(o => o.UniqueId).IsRequired();
 
                 entity.HasIndex(u => u.UniqueId).IsUnique();
-            });
+            });         
+        }
+
+        public static void Seed(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Model.Medication>().HasData(
+                new Model.Medication("Ibuprofeno", 3),
+                new Model.Medication("Paracetemol", 5),
+                new Model.Medication("Aspirina", 2),
+                new Model.Medication("Tramadol", 1),
+                new Model.Medication("Codeína", 10),
+                new Model.Medication("Metamizol", 5),
+                new Model.Medication("Gabapentina", 4),
+                new Model.Medication("Daflon", 20)
+                );
         }
     }
 }

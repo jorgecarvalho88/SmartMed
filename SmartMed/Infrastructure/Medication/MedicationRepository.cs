@@ -14,9 +14,9 @@ namespace SmartMed.Infrastructure.Medication
             return base.GetQueryable<Model.Medication>();
         }
 
-        public Model.Medication Get(string name)
+        public Model.Medication Get(Guid uniqueId)
         {
-            return Get().Where(m => m.Name == name).FirstOrDefault();
+            return Get().Where(m => m.UniqueId == uniqueId).FirstOrDefault();
         }
 
         public List<Model.Medication> GetAll()
