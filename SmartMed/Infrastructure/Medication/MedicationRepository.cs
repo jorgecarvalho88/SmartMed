@@ -5,7 +5,7 @@ namespace SmartMed.Infrastructure.Medication
 {
     public class MedicationRepository : RepositoryBase, IMedicationRepository
     {
-        public MedicationRepository(MedicationDbContext context) : base(context)
+        public MedicationRepository(SmartMedDbContext context) : base(context)
         {
 
         }

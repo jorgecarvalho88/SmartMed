@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validations", "Validations\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataExtension", "DataExtension\DataExtension.csproj", "{7C09FB0B-D124-4B8C-8E47-28790C2179E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartApiUT", "SmartApiUT\SmartApiUT.csproj", "{A6091DEB-D00A-432B-85DC-AA87B303CC40}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{7C09FB0B-D124-4B8C-8E47-28790C2179E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C09FB0B-D124-4B8C-8E47-28790C2179E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C09FB0B-D124-4B8C-8E47-28790C2179E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6091DEB-D00A-432B-85DC-AA87B303CC40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6091DEB-D00A-432B-85DC-AA87B303CC40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6091DEB-D00A-432B-85DC-AA87B303CC40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6091DEB-D00A-432B-85DC-AA87B303CC40}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{2B7E8BB7-6E37-4D23-8F8A-91D4EBAEE3D1} = {256E083C-2D87-4B65-99B1-5D8722664F1E}
 		{3FB86C4C-D981-4E79-8502-5B4A0CA5C2DE} = {256E083C-2D87-4B65-99B1-5D8722664F1E}
 		{7C09FB0B-D124-4B8C-8E47-28790C2179E6} = {256E083C-2D87-4B65-99B1-5D8722664F1E}
+		{A6091DEB-D00A-432B-85DC-AA87B303CC40} = {F33F3E61-D8D4-4E95-9240-4A55D461830C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EE325C27-8CA0-4DA7-A2BB-958A75C5E36A}

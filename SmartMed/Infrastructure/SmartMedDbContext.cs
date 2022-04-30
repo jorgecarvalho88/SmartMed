@@ -3,9 +3,9 @@ using SmartMed.Infrastructure.Medication;
 
 namespace SmartMed.Infrastructure
 {
-    public class MedicationDbContext : DbContext
+    public class SmartMedDbContext : DbContext
     {
-        public MedicationDbContext(DbContextOptions options) : base(options)
+        public SmartMedDbContext(DbContextOptions options) : base(options)
         {
 
         }

@@ -11,7 +11,7 @@ using SmartMed.Infrastructure;
 
 namespace SmartMed.Migrations
 {
-    [DbContext(typeof(MedicationDbContext))]
+    [DbContext(typeof(SmartMedDbContext))]
     [Migration("20220429214520_Medications table")]
     partial class Medicationstable
     {

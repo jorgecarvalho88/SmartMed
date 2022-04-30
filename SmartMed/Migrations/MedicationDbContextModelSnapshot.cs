@@ -10,7 +10,7 @@ using SmartMed.Infrastructure;
 
 namespace SmartMed.Migrations
 {
-    [DbContext(typeof(MedicationDbContext))]
+    [DbContext(typeof(SmartMedDbContext))]
     partial class MedicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

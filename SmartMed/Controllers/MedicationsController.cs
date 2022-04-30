@@ -39,7 +39,7 @@ namespace SmartMed.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<MedicationResponseDto>))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(IEnumerable<MedicationResponseDto>))]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task< IActionResult> Delete(Guid uniqueId)
+        public async Task<IActionResult> Delete(Guid uniqueId)
         {
             return Ok(await _medicationService.Delete(uniqueId));
         }

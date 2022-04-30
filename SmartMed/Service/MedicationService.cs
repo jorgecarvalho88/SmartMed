@@ -44,7 +44,7 @@ namespace SmartMed.Service
         {
             await _medicationRepository.BeginTransaction();
 
-            var existingMedication = _medicationRepository.Get(medicationId);
+            var existingMedication = await _medicationRepository.Get(medicationId);
             if (existingMedication is null)
             {
                 await _medicationRepository.RollBackTransaction();

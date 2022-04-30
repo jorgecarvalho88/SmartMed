@@ -15,7 +15,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddTransient<IMedicationService, MedicationService>();
 builder.Services.AddTransient<IMedicationRepository, MedicationRepository>();
-builder.Services.AddDbContext<MedicationDbContext>(options =>
+builder.Services.AddDbContext<SmartMedDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetSection("ConnectionStrings:sqlConnection").Value));
 
 var app = builder.Build();
