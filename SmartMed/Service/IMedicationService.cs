@@ -4,8 +4,8 @@ namespace SmartMed.Service
 {
     public interface IMedicationService
     {
-        List<MedicationResponseDto> GetAll();
-        MedicationResponseDto Add(MedicationRequestDto user);
-        MedicationResponseDto Delete(Guid uniqueId);
+        Task<List<MedicationResponseDto>> GetAll();
+        Task<MedicationResponseDto> Add(MedicationRequestDto user);
+        Task<MedicationResponseDto> Delete(Guid uniqueId);
     }
 }

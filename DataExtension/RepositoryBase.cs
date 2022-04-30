@@ -16,9 +16,9 @@ namespace DataExtension
             this.context = context;
         }
 
-        public void BeginTransaction()
+        public async Task BeginTransaction()
         {
-            context.Database.BeginTransaction();
+            await context.Database.BeginTransactionAsync();
         }
 
         public TEntity Create<TEntity>(TEntity entity) where TEntity : class
@@ -36,19 +36,19 @@ namespace DataExtension
             context.Remove(entity);
         }
 
-        public int Commit()
+        public async Task<int> Commit()
         {
-            return context.SaveChanges();
+            return await context.SaveChangesAsync();
         }
 
-        public void CommitTransaction()
+        public async Task CommitTransaction()
         {
-            context.Database.CurrentTransaction?.Commit();
+            await context.Database.CurrentTransaction?.CommitAsync();
         }
 
-        public void RollBackTransaction()
+        public async Task RollBackTransaction()
         {
-            context.Database.CurrentTransaction?.Rollback();
+            await context.Database.CurrentTransaction?.RollbackAsync();
         }
 
         public virtual IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class

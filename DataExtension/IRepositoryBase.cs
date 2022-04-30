@@ -8,13 +8,13 @@ namespace DataExtension
 {
     public interface IRepositoryBase
     {
-        void BeginTransaction();
-        int Commit();
-        void CommitTransaction();
+        Task BeginTransaction();
+        Task<int> Commit();
+        Task CommitTransaction();
         TEntity Create<TEntity>(TEntity entity) where TEntity : class;
         void Delete<TEntity>(TEntity entity);
         IQueryable<TEntity> GetQueryable<TEntity>() where TEntity : class;
-        void RollBackTransaction();
+        Task RollBackTransaction();
         void Update<TEntity>(TEntity entity);
     }
 }

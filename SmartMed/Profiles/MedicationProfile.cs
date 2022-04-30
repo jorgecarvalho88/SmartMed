@@ -27,6 +27,10 @@ namespace SmartMed.Profiles
                 .ForMember(
                 dest => dest.Errors,
                 from => from.MapFrom(x => x.Errors)
+                )
+                .ForMember(
+                dest => dest.IsValid,
+                from => from.MapFrom(x => x.IsValid)
                 );
         }
     }

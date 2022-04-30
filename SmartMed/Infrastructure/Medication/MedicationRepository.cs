@@ -1,4 +1,5 @@
 ﻿using DataExtension;
+using Microsoft.EntityFrameworkCore;
 
 namespace SmartMed.Infrastructure.Medication
 {
@@ -14,14 +15,14 @@ namespace SmartMed.Infrastructure.Medication
             return base.GetQueryable<Model.Medication>();
         }
 
-        public Model.Medication Get(Guid uniqueId)
+        public async Task<Model.Medication?> Get(Guid uniqueId)
         {
-            return Get().Where(m => m.UniqueId == uniqueId).FirstOrDefault();
+            return await Get().Where(m => m.UniqueId == uniqueId).FirstOrDefaultAsync();
         }
 
-        public List<Model.Medication> GetAll()
+        public async Task<List<Model.Medication>> GetAll()
         {
-            return Get().ToList();
+            return await Get().ToListAsync();
         }
     }
 }
