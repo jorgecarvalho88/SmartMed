@@ -7,13 +7,13 @@ namespace SmartMed.Dtos
         public MedicationResponseDto()
         {}
 
-        public MedicationResponseDto(Guid uniqueId, string name, int quantity, DateTime creationDate, List<string> errors)
+        public MedicationResponseDto(Guid uniqueId, string name, int quantity, DateTime creationDate)
         {
             UniqueId = uniqueId;
             Name = name;
             Quantity = quantity;
             CreationDate = creationDate;
-            Errors = errors;
+
         }
 
         public Guid UniqueId { get; set; }

@@ -31,13 +31,15 @@ namespace SmartMed.Service
                 _medicationRepository.Create(newMedication);
                 await _medicationRepository.Commit();
                 await _medicationRepository.CommitTransaction();
+                return _maper.Map<MedicationResponseDto>(newMedication);
             }
             else
             {
                 await _medicationRepository.RollBackTransaction();
-            }
-
-            return _maper.Map<MedicationResponseDto>(newMedication);
+                var response = _maper.Map<MedicationResponseDto>(medication);
+                response.Errors.AddRange(newMedication.Errors);
+                return response;
+            }       
         }
 
         public async Task<MedicationResponseDto> Delete(Guid medicationId)
